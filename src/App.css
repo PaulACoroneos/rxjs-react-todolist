@@ -26,6 +26,10 @@
   margin: 0 1rem;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 .container ul {
   padding: 0 2rem;
 }

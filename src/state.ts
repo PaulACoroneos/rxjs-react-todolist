@@ -8,7 +8,7 @@ export type Todo = {
 
 const subject = new Subject<Todo[]>();
 
-const initialState: Todo[] = [{ 'label': 'Hello rxjs todolist', id: uuid(), isCompleted: false }, { 'label': "learn reactive programming", id: uuid(), isCompleted: false }, { label: "build a proof of concept to start learning rxjs", id: uuid(), isCompleted: false }, { label: "It's been a while since you wrote vanilla CSS :)", id: uuid(), isCompleted: false }];
+const initialState: Todo[] = [{ 'label': 'Hello rxjs todolist', id: uuid(), isCompleted: true }, { 'label': "learn reactive programming", id: uuid(), isCompleted: false }, { label: "build a proof of concept to start learning rxjs", id: uuid(), isCompleted: false }, { label: "It's been a while since you wrote vanilla CSS :)", id: uuid(), isCompleted: true }];
 
 let state = initialState;
 
@@ -24,7 +24,7 @@ export const todoStore = {
     state = [...state, todo];
     subject.next(state);
   },
-  completeTodo: (id: string) => {
+  updateTodoCompletionState: (id: string) => {
     const newState = state.map(todo => (todo.id === id) ? { ...todo, isCompleted: !todo.isCompleted } : todo);
     state = newState;
     subject.next(state);
